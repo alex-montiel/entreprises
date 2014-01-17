@@ -1,0 +1,239 @@
+/*Configuration générale */
+
+* { margin: 0; padding: 0;}
+
+body {
+	margin: 0;
+	/*background-image: url(images/extensiblehead.jpg) ;*/
+	background-repeat: repeat-x;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+	background-color: #FFFFE5;
+}
+
+a { color: #3e3e3e; }
+
+a:hover {text-decoration: none; }
+
+/* -Header- */
+
+#header {
+	width: 369px;
+	height: 86px;
+	background: url(images/logo.png) no-repeat ;
+	margin: 10px 0 10px 10px;
+}
+
+#header span {
+	display: none;
+}
+
+/* -Menu header- */
+
+#menuhorizontal {
+	height: 27px;
+	margin: 50px 0 0 3%;
+	list-style-type: none;
+}
+
+#menuhorizontal li {
+	float: left;
+	display: block;
+	width: 81px;
+	height: 27px;
+	margin: 0 4px 0 13px ;
+	padding-top: 15px;
+	line-height: 15px;
+	text-align: center;
+	box-shadow: -10px 10px 12px grey;
+}
+#li1{
+	background: url(images/contact.png) no-repeat;
+}
+#li2{
+	background: url(images/offres.png) no-repeat;
+}
+#li3{
+	background: url(images/demandes.png) no-repeat;
+}
+#li4{
+	background: url(images/planning.png) no-repeat;
+}
+#li5{
+	background: url(images/statistiques.png) no-repeat;
+}
+#menuhorizontal li a {
+	color: #fff;
+	font-size: 1em;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#menuhorizontal li a:hover {text-decoration: underline;}
+
+/* Barre de Connexion */
+#connexion {
+	margin-top: -106px;
+	color: #6a6a6a;
+	padding: 5px 20px 15px 20px;
+	width: 180px;
+	background-color: #E1E1E1;
+	-webkit-box-shadow: 0 6px 0 Silver;
+	-webkit-border-radius: 0 0 70px 70px;
+	text-align: center;
+}
+
+/* Menu vertical */
+#menuvertical {
+	width: 140px;
+	margin: 18px 0 0 0 ;
+	float: left;
+	list-style-type: none;
+	display: none;
+}
+
+#menuvertical li {
+	display: block;
+	width: 140px;
+	height: 25px;
+	line-height: 25px;
+	text-align: left;
+	background: url(images/menuvertical.jpg) no-repeat;
+	color: #fff;
+	text-decoration: none;
+	padding-left: 10px;
+}
+#menuvertical li a  {
+	color: #fff;
+	text-decoration: none;
+}
+#menuvertical #derniersAjouts{
+	margin: 50px 0 0 0;
+}
+
+#menuvertical li a:hover {
+	text-decoration: underline;
+}
+
+.ongletsVerticaux{
+	margin: 9px 0;
+}
+
+/* Contenu */
+#contenu {
+	/*display: none;*/
+	/*width: 670px;
+	margin: 45px 0 0 185px;*/
+	margin-top: 40px;
+}
+
+#contenu h6 {
+	color: #fb8800;
+	margin: 25px 9px 0 0;
+	font-size: 5em;
+	text-align: center;
+}
+
+#gestion_modeles{
+	border: peru solid 2px;
+	background-color: black;
+	border-collapse: collapse;
+	margin: 0 10%;
+	width: 80%;
+}
+
+.gestion_modele_col{
+	padding-top: 15px;
+}
+#gestion_modeles #td2{
+	border-left: peru dotted 2px;
+	background-color: burlyWood;
+}
+#gestion_modeles #modele_param{
+	background-color: lightgoldenrodyellow;
+	float: left;
+	padding: 5px 20px;
+	width: 786px;
+}
+
+
+#listeModeles{
+	vertical-align: top;
+	padding: 15px;
+	background-color: lightSkyBlue;
+}
+#listeModeles ul{
+	margin-left: 15px;
+}
+
+#modele{
+	margin-left: 30px;
+}
+
+
+/* Tableau contacts */
+caption{
+	text-align: left;
+}
+#buttons{
+	float: left;
+}
+.tableau{
+	margin: 0 3%;
+	width: 94%;
+}
+.tableau input{
+	width: 100px;
+}
+/*tr{
+	height: 21px;
+}*/
+.tableau tr td{
+	padding-left: 3px;
+}
+.tableau tr td:first-child{
+	padding-left: 0;
+	text-align: center;
+}
+.tableau .title{
+	color: white;
+	background: rgb(141, 14, 63);
+}
+.filter{
+	background: rgb(245, 205, 115);
+	text-align: center;
+}
+.pair{
+	background-color: #D2EBFB;
+}
+.impair{
+	background-color: #75DB76;
+}
+
+#noResult{
+	margin-left: 36%;
+}
+#tableauContacts, #tableauOffres, #tableauDemandes{
+	margin-top: 40px;
+	margin-bottom: 4px;
+}
+
+.button{
+	background-color: #FFFFC8;
+	color: black;
+	font-weight: bolder;
+}
+
+#ajoutContact{
+	float: left;
+	margin-top: 5px;
+	margin-left: 3%;
+}
+
+
+/* Agenda */
+#calendar_selection{
+	width: 250px;
+	margin-right: 30px;
+	margin-left: auto;
+}

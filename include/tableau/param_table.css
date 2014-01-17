@@ -1,0 +1,15 @@
+.pair{
+	background-color: #FFDFA1;
+}
+.pair a, .impair a{
+	color: #00205E;
+	text-decoration: underline;
+}
+
+.impair{
+	background-color: #C2FFA1;	
+}
+
+.center{
+	text-align: center;
+}

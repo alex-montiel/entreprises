@@ -1,0 +1,195 @@
+body {
+	width: 995px;
+	height: 580px;
+	background-color: white;
+	padding: auto;
+	font-family: Helvetica, sans-serif;
+}
+
+#navlist {
+	width: 100%;
+	height: auto;
+	padding: 5px 0;
+	margin-left: 0;
+	border-bottom: 1px solid #778;
+	font: bold 10px Verdana, sans-serif;
+}
+
+#navlist li {
+	list-style: none;
+	margin: 0;
+	display: inline;
+}
+
+#navlist li a {
+	color: white;
+	background: rgb(141, 14, 63);
+	margin-left: 6px;
+	border: 1px solid #778;
+	border-bottom: none;
+	text-decoration: none;
+	font-size: 140%;
+	padding: 5px 10px;
+}
+
+#navlist li:first-child{
+	margin-left: 30px;
+}
+
+#navlist li a:link {
+	color: white;
+}
+
+#navlist li a:visited {
+	/*color: #32CD32;
+	font-size: large;*/
+}
+	
+#navlist li a:hover {
+	color: rgb(141, 14, 63);
+	background: white;
+	border-color: #227;
+}
+	
+#navlist li a#current {
+	background: white;
+	border-bottom: 1px solid white;
+}
+
+p{
+	margin: 2px 0;
+}
+
+fieldset {
+	margin-bottom: 10px;
+	border: #999 1px solid;
+}
+
+/*fieldset:hover
+{
+	border-color: #c40400;
+	border-width: 1px;
+}*/
+
+fieldset legend
+{
+	padding: 0 10px;
+	border-left: #999 1px solid;
+	border-right: #999 1px solid;
+	font-size: 1em;
+	color: #999;
+}
+
+/*fieldset legend:hover
+{
+	padding: 0 10px;
+	border-left: #c40400 1px solid;
+	border-right: #c40400 1px solid;
+	font-size: 1em;
+	color: #c40400;
+}*/
+
+label
+{
+	background-color: #F0F0FF;
+	display: block;
+	width: 42%;
+	float: left;
+	padding-right: 1%;
+	text-align: left;
+	letter-spacing: 1px;
+}
+
+label:hover
+{
+	font-weight: bold;
+}
+
+.form_label_nostyle
+{
+	background: none;
+}
+
+input, select
+{
+	margin-left: 3%;
+	width: 53%;
+	border: #CCC 1px solid;
+}
+select{
+	width: 53.5%;
+}
+#gauche textarea{
+	margin-left:10px;
+	width: 100%;
+	border: #CCC 1px solid;
+}
+#observations{
+	resize: none;
+}
+input:hover, select:hover, input:focus, select:focus, textarea:hover, textarea:focus
+{
+	border: #999 1px solid;
+	background-color: #F0F0FF;
+}
+
+.gauche {
+	margin-top: 2px;
+	margin-left: 5px;
+	width: 484px;
+	height: 580px;
+	float: left;
+}
+
+.droite {
+	margin-top: 2px;
+	margin-right: 5px;
+	width: 484px;
+	height: 580px;
+	float: right;
+}
+
+#footer{
+	text-align: center;
+}
+
+#btSend, #btBack{
+	margin-left: 1%;
+	width: auto;
+}
+
+#btSend{
+	/*float: left;*/
+}
+
+#btBack{
+	/*float: right;*/
+}
+
+.suggestionsBox {
+	position: relative;
+	left: 30px;
+	margin: 10px 0px 0px 0px;
+	width: 200px;
+	background-color: #212427;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border: 2px solid #000;	
+	color: #fff;
+}
+.suggestionList {
+	margin: 0px;
+	padding: 0px;
+}
+	
+.suggestionList li {
+	margin: 0px 0px 3px 0px;
+	padding: 3px;
+	cursor: pointer;
+}
+	
+.suggestionList li:hover {
+	background-color: #659CD8;
+}
+
+
