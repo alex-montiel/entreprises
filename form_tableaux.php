@@ -59,7 +59,8 @@
 		?>
 	<!-- fonction AJAX -->
 </table>
+<!--        <a href="contact/contact.php" rel="shadowbox;height=800px;width=1024px;" title="Ajouter un contact" id="ajoutContact"><input type="button" value="Ajouter" class="button"/></a>-->
 
-<!-- <a href="contact/contact.php" rel="shadowbox;height=800px;width=1024px;" title="Ajouter un contact" id="ajoutContact"><input type="button" value="Ajouter" class="button"/></a>
- -->
- <a href="<?php echo $lien; ?>" rel="shadowbox;height=800px;width=1024px;" title="Ajouter une offre" id="ajoutContact"><img src="Images/Ajouter2.png" title="Ajouter une offre" /></a>
+<a href="#" rel="shadowbox;height=800px;width=1024px;" title="Ajouter une offre" id="ajoutContact" ><img src="Images/Ajouter2.png" title="Ajouter une offre" />
+ 
+<!--<a href="<?php echo $lien; ?>" rel="shadowbox;height=800px;width=1024px;" title="Ajouter une offre" id="ajoutContact"><img src="Images/Ajouter2.png" title="Ajouter une offre" /></a>-->

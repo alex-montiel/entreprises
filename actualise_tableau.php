@@ -1,10 +1,11 @@
 <?php
+error_reporting(E_ERROR);
 include 'include/connex.inc.php';
 
 //print_r($_GET['TValues']);
 
 // Fonction de recherche des bases à utiliser
-$stringRequestDb;
+$stringRequestDb = "";
 foreach ($_GET['TDbs'] as $db){
 	if (empty($stringRequestDb)){
 		$stringRequestDb = $db;
@@ -15,7 +16,7 @@ foreach ($_GET['TDbs'] as $db){
 }
 
 // Fonctions de recherches des champs à visualiser
-$stringRequestFields;
+$stringRequestFields="";
 foreach ($_GET['TSelect'] as $field){
 	$alias = "";
 	if(preg_match("/[.]/", $field)){ // Renomme champs si necessaire
@@ -57,7 +58,7 @@ function createRequestIn($val, $nameVar, $stringRequest){
 
 
 // Création requête
-$stringRequest;
+$stringRequest="";
 switch ($_GET['choix']) {
 	case "tous":
 		// Aucune condition
@@ -89,7 +90,7 @@ if ($_GET['conditions']){
 }
 
 $request = "SELECT " . $stringRequestFields . " FROM " . $stringRequestDb . $stringRequest . $conditions . ";";
-//echo $request;
+//echo "Requete ".$request;
 
 $response = mysql_query($request);
 $nbLine = mysql_num_rows($response);

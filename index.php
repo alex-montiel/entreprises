@@ -39,6 +39,31 @@
         <link href="include/shadowbox/shadowbox.css" rel="stylesheet" type="text/css"/>
         
         <script type="text/javascript">
+            var win = window.open("", "Liste des Contacts");
+            if(win.location == "about:blank"){
+                win.location = "index.php?requete=contact"
+            }
+            
+            var win = window.open("", "Contacts");
+            if(win.location == "about:blank"){
+                win.location = "contact/contact.php"
+            }
+            
+            var win = window.open("", "Liste des offres");
+            if(win.location == "about:blank"){
+                win.location = "index.php?requete=offre"
+            }
+            
+            var win = window.open("", "Offres");
+            if(win.location == "about:blank"){
+                win.location = "offre/offre.php"
+            }
+            
+            
+            
+        </script>
+        
+        <script type="text/javascript">
 			Shadowbox.init({
 		    	language:   "en",
 		    	players:    ["html", "iframe", "img"]
@@ -146,7 +171,7 @@
 					$return = mysql_query($requete);
 					while($donnees = mysql_fetch_array($return))
 					{
-						echo '<li><a href="offre/offre.php?id='.$donnees['id_offre'].'" rel="shadowbox;height=800px;width=1024px;" title="Modifiez une offre">'.$donnees['id_offre'].'</a> <a href="commerciale.php?id='.$donnees['id_offre'].'" title="Fiche commerciale"> Fiche</a></li>';
+                                             '<li><a href="offre/offre.php?id='.$donnees['id_offre'].'" rel="shadowbox;height=800px;width=1024px;" title="Modifiez une offre">'.$donnees['id_offre'].'</a> <a href="commerciale.php?id='.$donnees['id_offre'].'" title="Fiche commerciale"> Fiche</a></li>';
 					}
 				}
 			

@@ -1,4 +1,6 @@
 <?php
+
+error_reporting(E_ALL);
 include '../include/connex.inc.php';
 include '../include/myparam.inc.php';
 
