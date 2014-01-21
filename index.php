@@ -41,26 +41,23 @@
         <script type="text/javascript">
             var win = window.open("", "Liste des Contacts");
             if(win.location == "about:blank"){
-                win.location = "index.php?requete=contact"
+                win.location = "index.php?requete=contact";
             }
             
             var win = window.open("", "Contacts");
             if(win.location == "about:blank"){
-                win.location = "contact/contact.php"
+                win.location = "contact/contact.php";
             }
             
             var win = window.open("", "Liste des offres");
             if(win.location == "about:blank"){
-                win.location = "index.php?requete=offre"
+                win.location = "index.php?requete=offre";
             }
             
             var win = window.open("", "Offres");
             if(win.location == "about:blank"){
-                win.location = "offre/offre.php"
-            }
-            
-            
-            
+                win.location = "offre/offre.php";
+            }    
         </script>
         
         <script type="text/javascript">

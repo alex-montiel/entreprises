@@ -3,6 +3,21 @@
  * Ajax pour gestion recherche avec filtres 
  */
 
+function openModifContacts(id){
+     var win = window.open("", "Contacts");
+     if(win.location == "about:blank"){
+         win.location = "contact/contact.php?id="+id;
+     }
+}
+
+function openModifOffres(id){
+    var win = window.open("", "Offres");
+    
+    if(win.location == "about:blank"){
+        win.location = "offre/offre.php?id="+id;
+    }
+}
+
 function isPair(nb){
 	// Si le nombre / 2 = entier du nombre / 2, il est pair
 	if(nb/2 == Math.round(nb/2)){
@@ -155,17 +170,24 @@ function changeTableau(choix){
 					// Création nouvelle ligne et du champ fiche si demandé
 					if (fiche){
 						$("table").append("<tr id='T1line" + numLine + "' class='newLine'></tr>");				
-						$("table tr:last-child").append("<td><a href='" + lien + "?id=" + TFieldRequest[0]
-						 + "' rel='shadowbox;height=800px;width=1024px;' title='Modifier une offre'"
+						$("table tr:last-child").append("<td><a href='#'"
+						 + " title='Modifier une offre' onclick='openModifOffres("+TFieldRequest[0]+")'"
 						 + "class='popup'><img src='Images/loupe.png' title='Voir fiche'></a></img>"
 						 + "<a href='include/html2pdf/createPDF.php?id=" + TFieldRequest[0]
 						 + "' title='Fiche commerciale' target='_blank'>Fiche</a></td>");
 					}
 					else{
-						$("table").append("<tr id='T1line" + numLine + "' class='newLine'></tr>");				
-						$("table tr:last-child").append("<td><a href='" + lien + "?id=" + TFieldRequest[0]
-						 + "' rel='shadowbox;height=800px;width=1024px;' title='Modifier une offre'"
+//						$("table").append("<tr id='T1line" + numLine + "' class='newLine'></tr>");				
+//						$("table tr:last-child").append("<td><a href='" + lien + "?id=" + TFieldRequest[0]
+//						 + "' rel='shadowbox;height=800px;width=1024px;' title='Modifier une offre'"
+//						 + "class='popup'><img src='Images/loupe.png' title='Voir fiche'></a></img>");
+                                                
+                                                 
+                                                 $("table").append("<tr id='T1line" + numLine + "' class='newLine'></tr>");				
+						 $("table tr:last-child").append("<td><a href='#' title='Modifier un contact' onclick='openModifContacts("+TFieldRequest[0]+")'"
 						 + "class='popup'><img src='Images/loupe.png' title='Voir fiche'></a></img>");
+                                                 
+                                                 
 					}
 					
 					var numColumn = 2;
