@@ -62,6 +62,36 @@
 
 <!--        <a href="contact/contact.php" rel="shadowbox;height=800px;width=1024px;" title="Ajouter un contact" id="ajoutContact"><input type="button" value="Ajouter" class="button"/></a>-->
 
-<a href="#" rel="shadowbox;height=800px;width=1024px;" title="Ajouter une offre" id="ajoutContact" ><img src="Images/Ajouter2.png" title="Ajouter une offre" />
- 
-<!--<a href="<?php echo $lien; ?>" rel="shadowbox;height=800px;width=1024px;" title="Ajouter une offre" id="ajoutContact"><img src="Images/Ajouter2.png" title="Ajouter une offre" /></a>-->
+
+<script type="text/javascript">
+    function Ajouter(url){
+        var win;
+        alert('url : ' + url);
+        if(url == contact){
+            win = window.open("", "Contacts");
+            if(win.location=="about:blank"){
+                win.location = "contact/contact.php";
+            }else
+                win.close();
+                window.open("", "Contacts");
+                win.location = "contact/contact.php";
+        }else{
+            win = window.open("", "Offres");
+            if(win.location=="about:blank"){
+                win.location = "offre/offre.php";
+            }else
+                win.close();
+                window.open("", "Contacts");
+                win.location = "offre/offre.php";
+        }
+    }
+</script>
+    
+    <?php 
+
+
+    if($action == 'contact'){
+        ?><a href="#" title="Ajouter un contact" id="ajoutContact" onclick="Ajouter(contact)"><img src="Images/Ajouter2.png" /></a><?php
+    }else{
+        ?><a href="#" title="Ajouter une offre" id="ajoutContact" onclick="Ajouter(offre)"><img src="Images/Ajouter2.png" /></a><?php
+    }

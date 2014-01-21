@@ -217,6 +217,7 @@
 			$TColumn[] = array("id" => "cp_agence", "libelle" => "CP", "type" => "text", "filter" => true);
 			$TColumn[] = array("id" => "nom_agence", "libelle" => "Nom", "type" => "text", "filter" => true);
 			
+                        $action = 'contact';
 			include 'form_tableaux.php'; 
 			?>
 		</div>
@@ -246,6 +247,7 @@
 			$TColumn[] = array("id" => "code_postal", "libelle" => "CP", "type" => "text", "filter" => true);
 			$TColumn[] = array("id" => "offre.ville", "libelle" => "ville", "type" => "text", "filter" => true);
 			
+                        $action = 'offre';
 			include 'form_tableaux.php'; 
 			?>
 		</div>

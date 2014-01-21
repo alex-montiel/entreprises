@@ -5,17 +5,24 @@
 
 function openModifContacts(id){
      var win = window.open("", "Contacts");
-     if(win.location == "about:blank"){
+     if(win.location == "about:blank"){  
          win.location = "contact/contact.php?id="+id;
+     }else{   
+         win.close();
+         win = window.open("", "Contacts");
+         win.location = "contact/contact.php?id="+id;       
      }
 }
 
 function openModifOffres(id){
-    var win = window.open("", "Offres");
-    
+    var win = window.open("", "Offres");    
     if(win.location == "about:blank"){
         win.location = "offre/offre.php?id="+id;
-    }
+    }else{
+        win.close();
+        win = window.open("", "Offres");
+         win.location = "offre/offre.php?id="+id;
+     }
 }
 
 function isPair(nb){
