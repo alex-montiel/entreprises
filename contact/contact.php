@@ -19,7 +19,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-<title>Ajouter un contact</title>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="../include/contact.css" rel="stylesheet" type="text/css" media="screen"/>
 <link rel="stylesheet" type="text/css" href="../include/shadowbox/shadowbox.css" />
@@ -193,6 +193,8 @@ $(document).ready(function(){
 	}
 
 </script>
+
+<title>Contact</title>
 </head>
 
 <body>
@@ -464,9 +466,10 @@ $(document).ready(function(){
 	<p>Je ne sais pas encore à quoi sert cet onglet...</p>
 </div>
 
+    
 <div id="footer">
 	<input type="submit" id="btSend" value="<?php if(isset($id_contact)){ echo "Modifier le contact";}else{ echo "Ajouter le nouveau contact";}?>"/>
-	<input type="button" id="btBack" value="Quitter" onclick="parent.Shadowbox.close();" />
+	<input type="button" id="btBack" value="Quitter" onclick="javascript:window.close()" />
 </div>
 </form>
 

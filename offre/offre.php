@@ -1541,7 +1541,8 @@
 </div>
 
 <div id="footer">
-	<input type="submit" id="btSubmit" value="<?php if(isset($id_offre)){echo "Modifier l'offre";}else{echo "Ajouter l'offre";}?>"/>
+	<input type="submit" id="btSubmit" value="<?php if(isset($id_offre)){echo "Modifier l'offre";}else{echo "Ajouter l'offre";}?>"/><br /><br />
+        <input type="button" id="btBack" value ="Quitter" onclick="javascript:window.close()"/>
 </div>
 </form>
 </body>

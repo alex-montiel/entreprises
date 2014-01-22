@@ -1,4 +1,4 @@
-/* Body à la taille de la fenetre shadowbox */
+/* Body ï¿½ la taille de la fenetre shadowbox */
 
 body {
 	width: 995px;
@@ -91,7 +91,7 @@ label
 	text-align: left;
 	letter-spacing: 1px;
 	font-size: 0.9em;
-	margin-top: 4px; /*décalage*/
+	margin-top: 4px; /*dï¿½calage*/
 }
 
 .form_label_nostyle

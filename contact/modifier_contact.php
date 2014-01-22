@@ -9,7 +9,7 @@
 ?>
 
 
-<title>Ajouter un contact</title>
+<title>Modifier un contact</title>
 </head>
 
 <body>
@@ -114,7 +114,8 @@ if(!empty($_POST['id_contact']))
 }
 ?>	
 <script type="text/javascript">
-	parent.Shadowbox.close();
+	alert('Le contact à bien été modifié');
+        window.close();       
 </script>
 	
 

@@ -60,9 +60,6 @@
 	<!-- fonction AJAX -->
 </table>
 
-<!--        <a href="contact/contact.php" rel="shadowbox;height=800px;width=1024px;" title="Ajouter un contact" id="ajoutContact"><input type="button" value="Ajouter" class="button"/></a>-->
-
-
 <script type="text/javascript">
     function Ajouter(url){
         var win;
@@ -92,6 +89,6 @@
 
     if($action == 'contact'){
         ?><a href="#" title="Ajouter un contact" id="ajoutContact" onclick="Ajouter(contact)"><img src="Images/Ajouter2.png" /></a><?php
-    }else{
+    }else if($action == 'offre'){
         ?><a href="#" title="Ajouter une offre" id="ajoutContact" onclick="Ajouter(offre)"><img src="Images/Ajouter2.png" /></a><?php
     }
