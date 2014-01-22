@@ -115,7 +115,16 @@ if(!empty($_POST['id_contact']))
 ?>	
 <script type="text/javascript">
 	alert('Le contact à bien été modifié');
-        window.close();       
+        window.close();
+        win = window.open("", "Liste des contacts");
+        if(win.location == "about:blank"){
+            win.location = "index.php?action=contact";
+        }else{
+            win.close();
+            win = window.open("", "Liste des contacts");
+            win.location = "index.php?action=contact";
+        }
+            
 </script>
 	
 

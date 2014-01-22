@@ -42,15 +42,17 @@ if(isset($_POST['login']) && isset($_POST['mdp']))
 		$_SESSION['id'] = $donnees['id_utilisateur'];
 		$_SESSION['agence'] = $donnees['id_agence'];
 		$_SESSION['nom'] = $donnees['nom_utilisateur'];
+                header("Location:../index.php",false);
                 require('index.php');
                 exit();
-		//header("Location:../index.php",false);
+		
 	}
 	else
 	{
+                header("Location:../accueil.php",false);
                 include('../accueil.php');
                 exit();
-		//header("Location:../accueil.php",false);
+		
 	}
 }
 
