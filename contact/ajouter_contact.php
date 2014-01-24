@@ -85,10 +85,13 @@ if(!empty($_POST['nom_contact']))
 ?>	
 <script type="text/javascript">
 	//permet de fermer la fenetre contact pour revenir sur l'index
-	parent.Shadowbox.close();
+        window.close();
         var win = window.open("", "Liste des contacts");
         if(win.location == "about:blank"){
             win.close();
+            window.open("", "Liste des contacts");
+            win.location = 'index.php?requete=contact';
+        }else{
             window.open("", "Liste des contacts");
             win.location = 'index.php?requete=contact';
         }

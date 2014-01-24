@@ -148,5 +148,15 @@ if(!empty($_POST['classement']))
 
 ?>
 <script type="text/javascript">
-	parent.Shadowbox.close();
+	//permet de fermer la fenetre contact pour revenir sur l'index
+        window.close();
+        var win = window.open("", "Liste des offres");
+        if(win.location == "about:blank"){
+            win.close();
+            window.open("", "Liste des offres");
+            win.location = 'index.php?requete=offre';
+        }else{
+            window.open("", "Liste des offres");
+            win.location = 'index.php?requete=offre';
+        }
 </script>
