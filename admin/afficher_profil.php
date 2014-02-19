@@ -59,7 +59,7 @@
 		<li id="li2"><a href="afficher_profil.php?requete=agence">Agences</a></li>
 		<li id="li3"><a href="afficher_profil.php?requete=fiche">Fiches PDF</a></li>
 		<li id="li4"><a href="afficher_profil.php?requete=modele">Modèles</a></li>
-		<li id="li5" style="margin-left: 70px;"><a href="../index.php5">Sortir</a></li>
+		<li id="li5" style="margin-left: 70px;"><a href="../index.php">Sortir</a></li>
 	</ul>
 	
 	<ul id="menuvertical">

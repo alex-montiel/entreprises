@@ -43,16 +43,18 @@ if(isset($_POST['login']) && isset($_POST['mdp']))
 		$_SESSION['agence'] = $donnees['id_agence'];
 		$_SESSION['nom'] = $donnees['nom_utilisateur'];
                 $Nom_de_la_page="../index.php";
-                include_once "$Nom_de_la_page";
+                //include_once "$Nom_de_la_page";
+                header("Location:../index.php",false);
                 exit(); 
-		//header("Location:../index.php",false);
+		
 	}
 	else
 	{
                 $Nom_de_la_page="../accueil.php";
-                include_once "$Nom_de_la_page";
+                //include_once "$Nom_de_la_page";
+                header("Location:../accueil.php",false);
                 exit(); 
-		//header("Location:../accueil.php",false);
+		
 	}
 }
 

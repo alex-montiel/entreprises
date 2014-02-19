@@ -37,31 +37,7 @@
 		<![endif]-->
         <link rel="stylesheet" href="style.css" type="text/css" media="screen" title="Normal" />
         <link href="include/shadowbox/shadowbox.css" rel="stylesheet" type="text/css"/>
-        
-        <script type="text/javascript">
-            var win = window.open("", "Liste des Contacts");
-            if(win.location == "about:blank"){
-                win.location = "index.php?requete=contact"
-            }
-            
-            var win = window.open("", "Contacts");
-            if(win.location == "about:blank"){
-                win.location = "contact/contact.php"
-            }
-            
-            var win = window.open("", "Liste des offres");
-            if(win.location == "about:blank"){
-                win.location = "index.php?requete=offre"
-            }
-            
-            var win = window.open("", "Offres");
-            if(win.location == "about:blank"){
-                win.location = "offre/offre.php"
-            }
-            
-            
-            
-        </script>
+
         
         <script type="text/javascript">
 			Shadowbox.init({
@@ -200,15 +176,36 @@
 	
 	<?php 
 	if($_GET['requete'] == "contact"){
+            
+            if(isset($_GET['page']) && $_GET['page']!= 0){
+                $pageActuelle = intval($_GET['page']);
+                if ($pageActuelle > $nbPage){
+                    $pageActuelle = $nbPage;
+                }
+            }else{
+                $pageActuelle = 1;
+}
+
+            
+            $pagination = 15;
+            $resultat = mysql_query('SELECT COUNT(*) AS total FROM contact');
+            $tabResult = mysql_fetch_assoc($resultat);
+            $nbLignes = $tabResult['total'];
+            $nbPage = ceil($nbLignes / $pagination);
+
 		?>
 		<script type="text/javascript">
 			var TDbs = new Array;
 			TDbs = ["agence", "contact"];
+                        var nbPage;
+                        nbPage = <?php echo $nbPage; ?>;
 		</script>
+        
 		<div id="tableauContacts">
 			<?php
+                        
 			// Parametre tableau
-			$caption = "Liste des conctacts";
+			$caption = "Liste des contacts";
 			$TColumn[] = array("id" => "choix", "libelle" => "", "type" => "select", "filter" => true);
 			$TColumn[] = array("id" => "id_contact", "libelle" => "Code", "type" => "text", "filter" => false);
 			$TColumn[] = array("id" => "nom_contact", "libelle" => "Nom", "type" => "text", "filter" => true);
@@ -226,12 +223,30 @@
 	<?php
 	}
 	
-	if($_GET['requete'] == "offre"){
-			?>
+        if($_GET['requete'] == "offre"){
+            
+            if(isset($_GET['page']) && $_GET['page']!= 0){
+                $pageActuelle = intval($_GET['page']);
+                if ($pageActuelle > $nbPage){
+                    $pageActuelle = $nbPage;
+                }
+            }else{
+                $pageActuelle = 1;
+            }
+		
+            $pagination = 15;
+            $resultat = mysql_query('SELECT COUNT(*) AS total FROM offre');
+            $tabResult = mysql_fetch_assoc($resultat);
+            $nbLignes = $tabResult['total'];
+            $nbPage = ceil($nbLignes / $pagination);
+            
+            ?>
 		<script type="text/javascript">
 			var TDbs = new Array;
 			TDbs = ["offre", "utilisateur"];
 			var conditions = "offre.id_utilisateur_suivi = utilisateur.id_utilisateur";
+                        var nbPage;
+                        nbPage = <?php echo $nbPage; ?>;
 		</script>
 		<div id="tableauOffres">
 			<?php

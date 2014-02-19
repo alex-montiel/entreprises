@@ -292,11 +292,18 @@ $(document).ready(function(){
 			<label for="ville">Ville</label> 		
 			<input type="text" name="ville" id="ville" maxlength="26" value="<?php echo $donnees['ville']; ?>" onchange="afficheCp(this.value)"/>
 		</p>
-		
+		<p>
+			<!-- Appelle de la fonction afficheCp pour vérification et affichage du code postal correspondante -->
+			
+			<label for="email">E-mail</label> 		
+			<input type="text" name="email" id="email" maxlength="30" value="<?php echo $donnees['email']; ?>"/>
+		</p>
+                        
 		<p><label for="pays">Pays:</label> 		
 			<select name="pays" id="pays" tabindex="1">
 				<option value="france">France</option>
 			</select>
+                    
 		</p>
 		</fieldset>
 		<fieldset id="fSociete">

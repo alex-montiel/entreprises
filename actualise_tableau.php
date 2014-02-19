@@ -2,10 +2,12 @@
 error_reporting(E_ERROR);
 include 'include/connex.inc.php';
 
+
 //print_r($_GET['TValues']);
 
 // Fonction de recherche des bases à utiliser
 $stringRequestDb = "";
+
 foreach ($_GET['TDbs'] as $db){
 	if (empty($stringRequestDb)){
 		$stringRequestDb = $db;
@@ -89,7 +91,33 @@ if ($_GET['conditions']){
 	}
 }
 
-$request = "SELECT " . $stringRequestFields . " FROM " . $stringRequestDb . $stringRequest . $conditions . ";";
+$pagination = 15;
+if($stringRequestDb == 'agence, contact'){
+    $request = 'SELECT COUNT(id_contact) AS total FROM '.$stringRequestDb.';';
+    $tableSql = 'contact';
+}else if($stringRequestDb == 'offre, utilisateur'){
+    $request = 'SELECT COUNT(id_offre) AS total FROM '.$stringRequestDb.';';
+    $tableSql = 'offre';
+}
+$resultat = mysql_query($request);
+$nbLignes = mysql_fetch_assoc($resultat);
+$total = $nbLignes['total'];
+
+
+$nbPage = ceil($total / $pagination);
+
+if(isset($_GET['page']) && $_GET['page']!= 0){
+    $pageActuelle = intval($_GET['page']);
+    if ($pageActuelle > $nbPage){
+        $pageActuelle = $nbPage;
+    }
+}else{
+    $pageActuelle = 1;
+}
+
+$premiereEntree = ($pageActuelle - 1)*$pagination;
+
+$request = "SELECT " . $stringRequestFields . " FROM " . $stringRequestDb . $stringRequest . $conditions . " LIMIT ".$premiereEntree.",".$pagination.";";
 //echo "Requete ".$request;
 
 $response = mysql_query($request);
@@ -124,5 +152,7 @@ else{
 			$passage++;
 		}
 	}
+        header('index.php?requete='.$tableSql.'&page='.$pageActuelle.'&nbpage='.$nbPage);
 }
 ?>
+

@@ -22,7 +22,7 @@ function styleTableau(){
 	//$("table").after("<a rel='shadowbox;height=800px;width=1024px;' href='contact/contact.php?id_contact=16'>Fiche</a>");
 	var isTable = $("table");
 	
-	// Vérifi qu'il y a un tableau sur la page. 
+	// Vérifie qu'il y a un tableau sur la page. 
 	$(isTable).each(function(index){
 		var numTableau = index + 1;
 		
@@ -102,11 +102,16 @@ $(document).ready(function(){
 	}
 });
 
-function changeTableau(choix){
+function changeTableau(choix, page){
+    
+        if(typeof(page) === 'undefined'){
+            page = 1;          
+        }
+        //alert(page);
 	// Vide le tableau des filtres
 	TFiltersValue = [];
 	//var choix = $("#filter_choix").val();
-	
+        
 	// Actualise les valeurs des filtres
 	jQuery.each($(".filter > td > :input:not(:button, #filter_choix)"), function(){
 		TFiltersValue[TFiltersValue.length] = $(this).val();
@@ -119,6 +124,7 @@ function changeTableau(choix){
 		"TValues[]": TFiltersValue,
 		"TDbs[]": TDbs,
 		"choix": choix,
+                "page": page,
 		"conditions": function() { if(typeof (conditions) != "undefined"){ return conditions; } else{ return ""; alert();}; }
 	};
 	
@@ -136,7 +142,11 @@ function changeTableau(choix){
 				// Affiche résultats
 				// Lignes du tableau
 				var TLinesTable = $("table .impair, table .pair");
-				
+                                
+                                var TLinesPage = $("table .tabPage");
+                                
+                                
+//				
 				jQuery.each(TLinesTable, function(){
 					// Vide le tableau actuel
 					$(this).remove();
@@ -156,7 +166,7 @@ function changeTableau(choix){
 					if (fiche){
 						$("table").append("<tr id='T1line" + numLine + "' class='newLine'></tr>");				
 						$("table tr:last-child").append("<td><a href='" + lien + "?id=" + TFieldRequest[0]
-						 + "' rel='shadowbox;height=800px;width=1024px;' title='Modifier une offre'"
+						 +"' rel='shadowbox;height=800px;width=1024px;' title='Modifier une offre'"         
 						 + "class='popup'><img src='Images/loupe.png' title='Voir fiche'></a></img>"
 						 + "<a href='include/html2pdf/createPDF.php?id=" + TFieldRequest[0]
 						 + "' title='Fiche commerciale' target='_blank'>Fiche</a></td>");
@@ -165,7 +175,7 @@ function changeTableau(choix){
 						$("table").append("<tr id='T1line" + numLine + "' class='newLine'></tr>");				
 						$("table tr:last-child").append("<td><a href='" + lien + "?id=" + TFieldRequest[0]
 						 + "' rel='shadowbox;height=800px;width=1024px;' title='Modifier une offre'"
-						 + "class='popup'><img src='Images/loupe.png' title='Voir fiche'></a></img>");
+						 + "class='popup'><img src='Images/loupe.png' title='Voir fiche'></a></img>");                                           
 					}
 					
 					var numColumn = 2;
@@ -179,14 +189,59 @@ function changeTableau(choix){
 						numColumn++;
 					});
 					
+//                                        
+                                        
 					numLine++;
 					// Couleur lignes
 				});	
 				
+                                jQuery.each(TLinesPage, function(){
+                                        $(this).remove()
+                                });
+                                
+                                var $firstpage;
+                                var $prevpage;
+                                var $pageactuelle;
+                                var $nextpage;
+                                var $lastpage;
+                                var newpagesuiv;
+                                var newpageprec;
+                                var newpagelast;
 
-				styleTableau();
-				//$("table").after("<a rel='shadowbox;height=800px;width=1024px;' href='contact/contact.php?id_contact=16'>Fiche</a>");
-			}
+                                newpageprec = page - 1;
+                                newpagesuiv = page + 1;
+                                newpagelast = nbPage;
+
+                                $firstpage="<td><a href='#' id='btn_prem' onclick='changeTableau(\"" + choix + "\", 1)'><img src='images/Fast-Backward.png' title='Première Page'></img></a></td>";
+                                $prevpage="<td><a href='#' id='btn_prec' onclick='changeTableau(\"" + choix + "\", "+newpageprec+")'><img src='images/Arrow-Left.png' title='Page Précédente'></img></a></td>"; 
+                                $nextpage="<td><a href='#' id='btn_suiv' onclick='changeTableau(\"" + choix + "\", "+newpagesuiv+")'><img src='images/Arrow-Right.png' title='Page Suivante'></img></a></td>";                                                                  
+                                $lastpage="<td><a href='#' id='btn_dern' onclick='changeTableau(\"" + choix + "\", "+newpagelast+")'><img src='images/Fast-Forward.png' title='Dernière Page'></img></a></td>";
+                                $pageactuelle="<td><p>[Page : "+page+" de "+newpagelast+"]</p></td>"
+
+                                $("table").append("<tr class='tabPage'></tr>");
+                                $("table tr:last-child").append($firstpage+$prevpage+$pageactuelle+$nextpage+$lastpage);
+
+                                styleTableau();
+                                //$("table").after("<a rel='shadowbox;height=800px;width=1024px;' href='contact/contact.php?id_contact=16'>Fiche</a>");
+
+                                if(page == 1){
+                                    document.getElementById('btn_prem').style.visibility = 'hidden';
+                                    document.getElementById('btn_prec').style.visibility = 'hidden';
+                                }
+
+                                if(page == newpagelast){
+                                    document.getElementById('btn_suiv').style.visibility = 'hidden';
+                                    document.getElementById('btn_dern').style.visibility = 'hidden';
+                                }
+
+                                if(page<=newpagelast && page>=1){
+                                    $('#pageactu').html(page);
+                                }
+                                    
+                                    
+                                    
+                            }
+                        
 		},
 		error: function(){
 			alert("Erreur ajax");

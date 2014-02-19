@@ -29,6 +29,7 @@ if(!empty($_POST['id_contact']))
 	$cp = $_POST['cp'];
 	$ville = $_POST['ville'];
 	$pays = $_POST['pays'];
+        $email = $_POST['email'];
 	$societe = $_POST['societe'];
 	$forme_juridique = $_POST['forme_juridique'];
 	$capital = $_POST['capital'];
@@ -83,6 +84,7 @@ if(!empty($_POST['id_contact']))
 					cp = '$cp',
 					ville = '$ville',
 					pays = '$pays',
+                                        email = '$email',
 					societe = '$societe',
 					forme_juridique = '$forme_juridique',
 					capital = '$capital',
