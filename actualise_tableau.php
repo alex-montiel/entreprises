@@ -91,6 +91,7 @@ if ($_GET['conditions']){
 	}
 }
 
+//Calcul du nombre d'enregistrements pour la pagination
 $pagination = 15;
 if($stringRequestDb == 'agence, contact'){
     $request = 'SELECT COUNT(id_contact) AS total FROM '.$stringRequestDb.';';
@@ -103,7 +104,7 @@ $resultat = mysql_query($request);
 $nbLignes = mysql_fetch_assoc($resultat);
 $total = $nbLignes['total'];
 
-
+//Calcul du nombre de pages
 $nbPage = ceil($total / $pagination);
 
 if(isset($_GET['page']) && $_GET['page']!= 0){
@@ -115,6 +116,7 @@ if(isset($_GET['page']) && $_GET['page']!= 0){
     $pageActuelle = 1;
 }
 
+//Calcul du premier enregistrement a afficher
 $premiereEntree = ($pageActuelle - 1)*$pagination;
 
 $request = "SELECT " . $stringRequestFields . " FROM " . $stringRequestDb . $stringRequest . $conditions . " LIMIT ".$premiereEntree.",".$pagination.";";
@@ -122,14 +124,36 @@ $request = "SELECT " . $stringRequestFields . " FROM " . $stringRequestDb . $str
 
 $response = mysql_query($request);
 $nbLine = mysql_num_rows($response);
-$data = mysql_fetch_array($response);
+//$data = mysql_fetch_array($response);
 
+if(isset($_GET['choix']) && $_GET['choix'] != 'tous' ){
+    if($_GET['choix'] != 1 && $_GET['choix'] != "undefined"){
+        $requete = "SELECT COUNT(*) AS 'total' FROM " . $stringRequestDb . $stringRequest . $conditions;
+        $reponse = mysql_query($requete);
+        $nb_lignes = mysql_fetch_assoc($reponse);
+        $nb_total = $nb_lignes['total'];
+        $nb_page = ceil($nb_total / $pagination);
+        
+        $passage = 1;
+        
+        //Envoie du numéro de la derniere page au javascript
+        foreach($_GET['TSelect'] as $field){
+            if ($passage == sizeof($_GET['TSelect'])){
+                echo $nb_page;
+            }else{
+                echo $nb_page."*";
+            }
+            $passage++;
+        }           
+        
+    }  
+}
 // Renvoie données
 if ($nbLine == 0){
 	echo "0";
 }
 else{
-	$passage = 1;
+	/*$passage = 1;
 	foreach ($_GET['TSelect'] as $field){
 		if ($passage == sizeof($_GET['TSelect'])){
 			echo $data[$field];
@@ -138,7 +162,7 @@ else{
 			echo $data[$field]."*";
 		}
 		$passage++;
-	}
+	}*/
 	while ($data = mysql_fetch_array($response)){
 		echo "/";
 		$passage = 1;

@@ -8,11 +8,12 @@ if(isset($_POST['nom']))
 	$adresse = $_POST['adresse'];
 	$cp = $_POST['cp'];
 	$ville = $_POST['ville'];
+        $pays = $_POST['pays'];
 	$tel = $_POST['tel'];
 	$mail = $_POST['mail'];
 	
-	$requete = "INSERT INTO agence (nom_agence, adresse_agence, cp_agence, ville_agence, tel_agence, mail_agence)
-				VALUES ('$nom', '$adresse', '$cp', '$ville', '$tel', '$mail')";
+	$requete = "INSERT INTO agence (nom_agence, adresse_agence, cp_agence, ville_agence, pays_agence, tel_agence, mail_agence)
+				VALUES ('$nom', '$adresse', '$cp', '$ville', '$pays', '$tel', '$mail')";
 	$return = mysql_query($requete);
 	if(!$return)
 	{

@@ -47,7 +47,7 @@
 		<?php
 			if(isset($_SESSION['login']))
 	      	{
-	      		echo "Bonjour ".$_SESSION['login']." <a href=\"index.php5?requete=profil\">Profil</a>  <a href=\"../utilisateur/logout.php\">Déconnexion</a>"; 
+	      		echo "Bonjour ".$_SESSION['login']." <a href=../index.php?requete=profil\">Profil</a>  <a href=\"../utilisateur/logout.php\">Déconnexion</a>"; 
 	      		echo "<br/>".$_SESSION['info'];
 	      	}
 	      	$_SESSION['info'] = "";

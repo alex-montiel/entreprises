@@ -188,7 +188,7 @@
 
             
             $pagination = 15;
-            $resultat = mysql_query('SELECT COUNT(*) AS total FROM contact');
+            $resultat = mysql_query('SELECT COUNT(*) AS "total" FROM contact');
             $tabResult = mysql_fetch_assoc($resultat);
             $nbLignes = $tabResult['total'];
             $nbPage = ceil($nbLignes / $pagination);

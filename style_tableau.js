@@ -144,59 +144,71 @@ function changeTableau(choix, page){
 				var TLinesTable = $("table .impair, table .pair");
                                 
                                 var TLinesPage = $("table .tabPage");
-                                
-                                
-//				
+				
 				jQuery.each(TLinesTable, function(){
 					// Vide le tableau actuel
 					$(this).remove();
-				});
-				
+				});				
 				
 				// Découpage resultat par enregistrement
-				var TLineRequest = result.split("/");
-				
+				var TLineRequest = result.split("/");                                    
 				var numLine = 3;
-				
-				jQuery.each(TLineRequest, function(indexLine){
+				var passage = 1;
+                                var chainePage;
+                                
+				jQuery.each(TLineRequest, function(indexLine){ 
 					// Découpage par champs pour chaque enregistrement
 					var TFieldRequest = TLineRequest[indexLine].split("*");
-					
-					// Création nouvelle ligne et du champ fiche si demandé
-					if (fiche){
-						$("table").append("<tr id='T1line" + numLine + "' class='newLine'></tr>");				
-						$("table tr:last-child").append("<td><a href='" + lien + "?id=" + TFieldRequest[0]
-						 +"' rel='shadowbox;height=800px;width=1024px;' title='Modifier une offre'"         
-						 + "class='popup'><img src='Images/loupe.png' title='Voir fiche'></a></img>"
-						 + "<a href='include/html2pdf/createPDF.php?id=" + TFieldRequest[0]
-						 + "' title='Fiche commerciale' target='_blank'>Fiche</a></td>");
-					}
-					else{
-						$("table").append("<tr id='T1line" + numLine + "' class='newLine'></tr>");				
-						$("table tr:last-child").append("<td><a href='" + lien + "?id=" + TFieldRequest[0]
-						 + "' rel='shadowbox;height=800px;width=1024px;' title='Modifier une offre'"
-						 + "class='popup'><img src='Images/loupe.png' title='Voir fiche'></a></img>");                                           
-					}
-					
-					var numColumn = 2;
-					
-					jQuery.each(TFieldRequest, function(indexField){
-						//alert(TFieldRequest[9]);
-						// Création nouveau champ et remplissage
-						$("table tr:last-child").append("<td id='T1line" + numLine + "column" + numColumn + "'>"
-						 + TFieldRequest[indexField] + "</td>");
-						
-						numColumn++;
-					});
-					
-//                                        
                                         
-					numLine++;
+                                        
+                                        if(passage === 1){
+                                            //Le tableau renvoie le nombre de page en première ligne
+                                            //alert(TFieldRequest[0]);
+                                            chainePage = TFieldRequest[0];
+                                            //alert(chaine);     
+                                        }else{
+                                        
+                                            // Création nouvelle ligne et du champ fiche si demandé
+                                            if (fiche){
+                                                    $("table").append("<tr id='T1line" + numLine + "' class='newLine'></tr>");				
+                                                    $("table tr:last-child").append("<td><a href='" + lien + "?id=" + TFieldRequest[0]
+                                                     +"' rel='shadowbox;height=800px;width=1024px;' title='Modifier une offre'"         
+                                                     + "class='popup'><img src='Images/loupe.png' title='Voir fiche'></a></img>"
+                                                     + "<a href='include/html2pdf/createPDF.php?id=" + TFieldRequest[0]
+                                                     + "' title='Fiche commerciale' target='_blank'>Fiche</a></td>");
+                                            }else{					
+                                                    $("table").append("<tr id='T1line" + numLine + "' class='newLine'></tr>");				
+                                                    $("table tr:last-child").append("<td><a href='" + lien + "?id=" + TFieldRequest[0]
+                                                     + "' rel='shadowbox;height=800px;width=1024px;' title='Modifier une offre'"
+                                                     + "class='popup'><img src='Images/loupe.png' title='Voir fiche'></a></img>");                                           
+                                            }
+
+                                            var numColumn = 2;
+
+                                            //alert(chaine);
+                                            numColumn++;    
+                                            jQuery.each(TFieldRequest, function(indexField){
+
+                                                //alert(TFieldRequest[9]);
+                                                // Création nouveau champ et remplissage
+
+                                                $("table tr:last-child").append("<td id='T1line" + numLine + "column" + numColumn + "'>"
+                                                 + TFieldRequest[indexField] + "</td>");
+
+                                            });
+
+                                            numLine++;
+                                        
+                                        }
+                                        
 					// Couleur lignes
-				});	
-				
+                                        passage = 0;
+                                       // }
+                                        
+                                });	
+				//Gestion de la pagination et des boutons Précedents/suivants etc...
                                 jQuery.each(TLinesPage, function(){
-                                        $(this).remove()
+                                        $(this).remove();
                                 });
                                 
                                 var $firstpage;
@@ -207,11 +219,18 @@ function changeTableau(choix, page){
                                 var newpagesuiv;
                                 var newpageprec;
                                 var newpagelast;
-
+//                                var nb_page;
+                                
                                 newpageprec = page - 1;
                                 newpagesuiv = page + 1;
                                 newpagelast = nbPage;
-
+                                
+                                if((choix == 'contient') || (choix == 'debut')){
+                                    newpagelast = parseFloat(chainePage);
+                                    //alert('ok'+newpagelast);
+                                }
+                                //alert('page' + newpagelast);
+                                //Gestion des boutons de gestion de pages
                                 $firstpage="<td><a href='#' id='btn_prem' onclick='changeTableau(\"" + choix + "\", 1)'><img src='images/Fast-Backward.png' title='Première Page'></img></a></td>";
                                 $prevpage="<td><a href='#' id='btn_prec' onclick='changeTableau(\"" + choix + "\", "+newpageprec+")'><img src='images/Arrow-Left.png' title='Page Précédente'></img></a></td>"; 
                                 $nextpage="<td><a href='#' id='btn_suiv' onclick='changeTableau(\"" + choix + "\", "+newpagesuiv+")'><img src='images/Arrow-Right.png' title='Page Suivante'></img></a></td>";                                                                  
@@ -228,20 +247,11 @@ function changeTableau(choix, page){
                                     document.getElementById('btn_prem').style.visibility = 'hidden';
                                     document.getElementById('btn_prec').style.visibility = 'hidden';
                                 }
-
                                 if(page == newpagelast){
                                     document.getElementById('btn_suiv').style.visibility = 'hidden';
                                     document.getElementById('btn_dern').style.visibility = 'hidden';
-                                }
-
-                                if(page<=newpagelast && page>=1){
-                                    $('#pageactu').html(page);
-                                }
-                                    
-                                    
-                                    
-                            }
-                        
+                                }                                    
+                            }                       
 		},
 		error: function(){
 			alert("Erreur ajax");

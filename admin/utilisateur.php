@@ -9,7 +9,7 @@
 	?>
 	
 	<legend>Modifiez un utilisateur:</legend>
-	<form method="post" action="modifier_utilisateur.php">
+	<form method="post" action="modifier_utilisateur.php" >
 		<input type="hidden" id="id_utilisateur" name="id_utilisateur" value="<?php echo $id_utilisateur;?>"/>
 		<p>
 		<label for="agence">Agence:</label> 

@@ -10,9 +10,9 @@ $donnees = mysql_fetch_array($return);
 	});
 </script>
 
-<fieldset>
-	<legend>Modifier Votre profil:</legend>
-	<form method="post" action="utilisateur/modifier_profil.php">
+<fieldset id="zone_profil">
+	<legend>Modifier votre profil:</legend>
+	<form method="post" action="utilisateur/modifier_profil.php" id="form_profil">
 		<p>
 		<label for="telephone">Téléphone fixe:</label>
 		<input type="text" id="telephone" name="telephone" value="<?php echo $donnees['tel_utilisateur']; ?>" maxlength="10"/>
@@ -22,11 +22,13 @@ $donnees = mysql_fetch_array($return);
 		<input type="text" id="portable" name="portable" value="<?php echo $donnees['portable_utilisateur']; ?>" maxlength="10"/>
 		</p>
 		<p>
-		<label for="mail">Téléphone fixe:</label>
-		<input type="text" id="mail" name="mail" value="<?php echo $donnees['mail_utilisateur']; ?>"/>
+		<label for="mail">E-mail:</label>
+		<input type="email" id="mail" name="mail" value="<?php echo $donnees['mail_utilisateur']; ?>" maxlength="38" style="width: 200px;"/>
 		</p>
 		<p>
-		<input type="submit" value="Modifier"/> <a style="margin-left: 50px;" href="index.php?requete=mdp"><input type="button" value="Modifier Mot de Passe"/></a>
-		</p> 
+                <table>
+                    <th><input type="submit" value="Modifier" id="btn_profil"/></th>
+                    <th><a href="index.php?requete=mdp"><input type="button" value="Modifier Mot de Passe" id="btn_profil" style="width:200px;"/></a></th>		
+                </p>             
 	</form>
 </fieldset>

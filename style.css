@@ -1,4 +1,4 @@
-/*Configuration générale */
+/*Configuration gï¿½nï¿½rale */
 
 * { margin: 0; padding: 0;}
 
@@ -236,4 +236,75 @@ caption{
 	width: 250px;
 	margin-right: 30px;
 	margin-left: auto;
+}
+
+/* Formulaire utilisateur */
+#form_utilisateur, #form_agence, #form_profil, #form_mdp{
+    //margin: 60px auto;
+    padding-left: 10px;
+}
+
+#zone_utilisateur, #zone_agence, #zone_profil, #zone_mdp{
+    line-height:30px;
+    width: 600px;
+    margin-top: 10px;
+    margin-left: 50px;
+    margin-right: 20px;
+    border-radius: 10px;
+    background-color: #E1E1E1;
+    -moz-box-shadow: 15px 15px 15px 10px #656565;
+    -webkit-box-shadow: 15px 15px 15px 10px #656565;
+    -o-box-shadow: 15px 15px 15px 10px #656565;
+    box-shadow: 15px 15px 15px 10px #656565;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, Strength=15);
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+#zone_utilisateur legend, #zone_agence legend, #zone_profil legend, #zone_mdp legend{
+    border: none;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 15px;
+    font-family: Calibri;
+    font-weight: bolder;
+    font-size: 20px;
+    background-color: #585657;
+    color: white;
+}
+
+#zone_agence legend{
+    width: 300px;
+}
+
+#zone_utilisateur label, #zone_agence label, #zone_profil label, #zone_mdp label{
+    float: left;
+    width: 100px;
+}
+
+#zone_utilisateur label:hover, #zone_agence label:hover, #zone_profil label:hover, #zone_mdp label:hover{
+    text-decoration: underline;
+}
+
+#zone_agence label, #zone_profil label{
+    width: 175px;
+}
+
+
+#zone_utilisateur input, #zone_agence input, #zone_profil input, #zone_mdp input{
+    width: 100px;
+}
+
+#bouton_ajoutUser, #bouton_ajoutAgence, #btn_profil, #btn_mdp{
+    //border: 3px solid white;
+    margin-top: 10px;
+    margin-left: 20px;
+    border-radius: 10px;
+    text-shadow: 10px;
+    color: white;
+    background-color: #BF0415;
+}
+#bouton_ajoutUser, #bouton_ajoutAgence{
+    margin-left: 160px;
 }
