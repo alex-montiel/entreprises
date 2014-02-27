@@ -172,9 +172,13 @@
 	</div>
 	<?php 
 	}
-	?>
 	
-	<?php 
+	
+        $requete = "SELECT conf_pagination FROM utilisateur WHERE id_utilisateur = ".$_SESSION['id'];
+        $result = mysql_query($requete);
+        $resultArray = mysql_fetch_assoc($result);
+        $pagination = intval($resultArray['conf_pagination']);
+        
 	if($_GET['requete'] == "contact"){
             
             if(isset($_GET['page']) && $_GET['page']!= 0){
@@ -185,9 +189,11 @@
             }else{
                 $pageActuelle = 1;
 }
-
             
-            $pagination = 15;
+            
+            if($pagination == 0){
+                $pagination = 15;
+            }           
             $resultat = mysql_query('SELECT COUNT(*) AS "total" FROM contact');
             $tabResult = mysql_fetch_assoc($resultat);
             $nbLignes = $tabResult['total'];
@@ -199,6 +205,9 @@
 			TDbs = ["agence", "contact"];
                         var nbPage;
                         nbPage = <?php echo $nbPage; ?>;
+                        var pagination;
+                        pagination = <?php echo $pagination; ?>;
+                        
 		</script>
         
 		<div id="tableauContacts">
@@ -233,8 +242,9 @@
             }else{
                 $pageActuelle = 1;
             }
-		
-            $pagination = 15;
+            if($pagination == 0){
+                $pagination = 15;
+            } 
             $resultat = mysql_query('SELECT COUNT(*) AS total FROM offre');
             $tabResult = mysql_fetch_assoc($resultat);
             $nbLignes = $tabResult['total'];
@@ -247,6 +257,8 @@
 			var conditions = "offre.id_utilisateur_suivi = utilisateur.id_utilisateur";
                         var nbPage;
                         nbPage = <?php echo $nbPage; ?>;
+                        var pagination;
+                        pagination = <?php echo $pagination; ?>;
 		</script>
 		<div id="tableauOffres">
 			<?php

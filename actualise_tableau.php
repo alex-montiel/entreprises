@@ -92,7 +92,13 @@ if ($_GET['conditions']){
 }
 
 //Calcul du nombre d'enregistrements pour la pagination
-$pagination = 15;
+//if(isset($_SESSION['conf_pagination'])){
+//   $pagination = $_SESSION['conf_pagination'];
+//}else{
+//   $pagination = 15;
+//}
+
+$pagination = $_GET['pagination'];
 if($stringRequestDb == 'agence, contact'){
     $request = 'SELECT COUNT(id_contact) AS total FROM '.$stringRequestDb.';';
     $tableSql = 'contact';

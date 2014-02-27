@@ -244,7 +244,7 @@ caption{
     padding-left: 10px;
 }
 
-#zone_utilisateur, #zone_agence, #zone_profil, #zone_mdp{
+#zone_utilisateur, #zone_agence, #zone_profil, #zone_mdp, #zone_liste_agence{
     line-height:30px;
     width: 600px;
     margin-top: 10px;
@@ -261,7 +261,7 @@ caption{
     -webkit-border-radius: 10px;
 }
 
-#zone_utilisateur legend, #zone_agence legend, #zone_profil legend, #zone_mdp legend{
+#zone_utilisateur legend, #zone_agence legend, #zone_profil legend, #zone_mdp legend, #zone_liste_agence legend{
     border: none;
     border-radius: 10px;
     padding-left: 10px;
@@ -307,4 +307,15 @@ caption{
 }
 #bouton_ajoutUser, #bouton_ajoutAgence{
     margin-left: 160px;
+}
+
+//Tableau liste des agences
+#tableau_agence{
+    width: 200px;
+    margin-left: 50px;
+    border: solid black 5px;
+}
+
+#tableau_agence td th{
+    border: solid black 5px;
 }

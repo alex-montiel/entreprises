@@ -9,11 +9,14 @@
 		$telephone = $_POST['telephone'];
 		$portable = $_POST['portable'];
 		$mail = $_POST['mail'];
+                $_SESSION['conf_pagination'] = $_POST['conf_pagination'];
+                $conf_pagination = $_SESSION['conf_pagination'];
 		
 		$requete = "UPDATE utilisateur 
 					SET tel_utilisateur = '$telephone', 
 						portable_utilisateur = '$portable',
-						mail_utilisateur = '$mail'
+						mail_utilisateur = '$mail',
+                                                conf_pagination = '$conf_pagination'
 					WHERE id_utilisateur =".$id_utilisateur;
 		$return = mysql_query($requete);
 		

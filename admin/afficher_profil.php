@@ -106,7 +106,7 @@
 					include 'new_utilisateur.php';
 					break;
 				case "agence":
-					include 'new_agence.php';
+					include 'liste_agence.php';
 					break;
 				case "fiche":
 					include 'gestion_fiches.php';

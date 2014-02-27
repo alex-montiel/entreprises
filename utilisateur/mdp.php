@@ -14,7 +14,7 @@
 		?>
 		
 		<fieldset id="zone_mdp">
-			<legend>Vueillez entrer votre nouveau mot de passe.</legend>
+			<legend>Veuillez entrer votre nouveau mot de passe.</legend>
 			<form action="utilisateur/modifier_mdp.php" method="post" id="form_mdp">
 			<p>
 				<?php echo $_SESSION['info_mdp']; $_SESSION['info_mdp'] = ""; ?>

@@ -1,5 +1,5 @@
 <?php
-$requete = "SELECT tel_utilisateur, portable_utilisateur, mail_utilisateur FROM utilisateur WHERE id_utilisateur = ".$_SESSION['id'];
+$requete = "SELECT tel_utilisateur, portable_utilisateur, mail_utilisateur, conf_pagination FROM utilisateur WHERE id_utilisateur = ".$_SESSION['id'];
 $return = mysql_query($requete);
 $donnees = mysql_fetch_array($return);
 ?>
@@ -24,7 +24,12 @@ $donnees = mysql_fetch_array($return);
 		<p>
 		<label for="mail">E-mail:</label>
 		<input type="email" id="mail" name="mail" value="<?php echo $donnees['mail_utilisateur']; ?>" maxlength="38" style="width: 200px;"/>
-		</p>
+		</p>               
+                <p>
+                <label for="conf_pagination">Pagination : </label>
+                <input type="text" id="conf_pagination" name="conf_pagination" value="<?php if($donnees['conf_pagination'] != 0){ echo $donnees['conf_pagination'];}?>" />
+                </p>
+                
 		<p>
                 <table>
                     <th><input type="submit" value="Modifier" id="btn_profil"/></th>

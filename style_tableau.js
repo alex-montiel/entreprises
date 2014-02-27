@@ -125,6 +125,7 @@ function changeTableau(choix, page){
 		"TDbs[]": TDbs,
 		"choix": choix,
                 "page": page,
+                "pagination": pagination,
 		"conditions": function() { if(typeof (conditions) != "undefined"){ return conditions; } else{ return ""; alert();}; }
 	};
 	
